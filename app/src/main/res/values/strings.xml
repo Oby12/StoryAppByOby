@@ -1,0 +1,48 @@
+<resources>
+    <string name="app_name">StoryAppByOby</string>
+
+    <string name="signup">Register</string>
+    <string name="login">Login</string>
+    <string name="message_welcome_page">Where fascinating stories come to life! We proudly present a platform where you can explore and enjoy a variety of stories from different genres. From thrilling adventures to captivating romances, we provide easy access to an exciting world of stories that will entertain, inspire, and hold you spellbound with every word!!</string>
+    <string name="title_welcome_page">Welcome to YOURSTOR</string>
+    <string name="title_signup_page">Please complete your personal information below</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="message_login_page">Please enter your data first</string>
+    <string name="title_login_page">Let\'s share your story on YOURSTOR</string>
+    <string name="name">Name</string>
+    <string name="greeting">Halo %1$s,</string>
+    <string name="logout">LogOut</string>
+    <string name="email_hint">yourstore123@gmail.com</string>
+    <string name="name_hint">Your Name</string>
+
+    <string name="name_set_eror">Two Letters</string>
+    <string name="message_signup">The account with %1$s is ready. Let\'s log in and start Share Your Experience:).</string>
+    <string name="message_login">You have successfully logged in. Let,s create Your Story Now!!</string>
+    <string name="bottom_next_signup_login">Next</string>
+    <string name="email_set_eror">Not Valid</string>
+
+    <string name="expression_first">yeahhh!!</string>
+    <string name="expression_second">Upssss!!</string>
+
+    <string name="register_button_label">Register</string>
+    <string name="fill_form_error_label">Fill it in first</string>
+
+    <string name="message_no_valid_email">"your email or password not valid"</string>
+    <string name="description">description</string>
+    <string name="_text">Detail :</string>
+    <string name="upload_text">UPLOAD</string>
+    <string name="write_your_caption_text">write your caption</string>
+
+    <string name="message_passsword">The password must be at least 8 characters long</string>
+    <string name="toast_empty_image">The image was not found</string>
+
+    <string name="permission_toast_granted">Permission request granted!</string>
+    <string name="permission_toast_denied">"Permission request denied"</string>
+    <string name="message_upload_acc">Your post has been uploaded.</string>
+    <string name="message_upload_tolak">Your post didn\'t get uploaded.</string>
+    <string name="change_language">change_language\n</string>
+    <string name="profile_menu_text">profile_menu</string>
+    <string name="change_language_Text">Change Language</string>
+
+</resources>
