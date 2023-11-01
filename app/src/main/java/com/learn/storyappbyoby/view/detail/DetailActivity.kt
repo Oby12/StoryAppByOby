@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import androidx.activity.viewModels
 import androidx.lifecycle.ViewModel
 import com.learn.storyappbyoby.R
@@ -16,10 +17,6 @@ class DetailActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityDetailBinding
 
-//    private lateinit var detailViewModel: DetailViewModel
-
-//    private val detailViewModel by viewModels<DetailViewModel>()
-
     private lateinit var itemList : ListStoryItem
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,16 +24,15 @@ class DetailActivity : AppCompatActivity() {
         binding = ActivityDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-
+        supportActionBar?.hide()
 
         //val id = intent.getStringExtra(TAG)
 
         itemList = if (Build.VERSION.SDK_INT >= 33) {
-            intent.getParcelableExtra("storyItem", ListStoryItem::class.java)!!
+            intent.getParcelableExtra(TAG, ListStoryItem::class.java)!!
         } else {
             @Suppress("DEPRECATION")
-            intent.getParcelableExtra("storyItem")!!
+            intent.getParcelableExtra(TAG)!!
         }
 
         binding.fabBackMain.setOnClickListener{
@@ -44,14 +40,7 @@ class DetailActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-//        detailViewModel.detail.observe(this){storyDetail ->
-//            binding.apply {
-//                tvUsernameStoryDetail.text = storyDetail.name
-//            }
-//        }
-
         detail()
-
     }
 
 
@@ -63,18 +52,19 @@ class DetailActivity : AppCompatActivity() {
 
     fun detail(){
         binding.apply {
+            showLoading(true)
             tvUsernameStoryDetail.text = itemList.name
             descriptionDetail.text = itemList.description
             imgDetail.loadImage(itemList.photoUrl.toString())
             imgUserDetail.setImageResource(R.drawable.wendy)
+            showLoading(false)
         }
     }
 
+    private fun showLoading(isLoading: Boolean) {
+        binding.progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
+    }
     companion object{
-        const val TAG = "DetailActivity"
-        const val USERNAME = "image"
-        const val DESCRIPTION = "description"
-        const val IMG_STORY = "img_story"
-        const val IMG_DETAIL = "img_detail"
+        const val TAG = "StoryList"
     }
 }

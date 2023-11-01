@@ -22,8 +22,8 @@ class UploadStoryViewModel(private val repository: UserRepository) : ViewModel()
         return repository.getSession().asLiveData()
     }
 
-    fun uploadStory(imageFile: MultipartBody.Part, description: RequestBody) {
-        val liveData = repository.uploadImage(imageFile, description)
+    fun uploadStory(token : String,imageFile: MultipartBody.Part, description: RequestBody) {
+        val liveData = repository.uploadImage(token,imageFile, description)
         _uploadStory.addSource(liveData) { result ->
             _uploadStory.value = result
         }

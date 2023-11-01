@@ -9,6 +9,7 @@ import android.util.AttributeSet
 import android.view.View
 import androidx.appcompat.widget.AppCompatEditText
 import androidx.core.content.ContextCompat
+import com.learn.storyappbyoby.R
 
 class MyEditText : AppCompatEditText {
 
@@ -41,7 +42,8 @@ class MyEditText : AppCompatEditText {
                 val passwordValid = s.toString().length >= 8
 
                 if (!passwordValid) {
-                    setError("Password tidak boleh kurang dari 8 karakter", null)
+                    val errorText = context.getString(R.string.message_passsword)
+                    setError(errorText, null)
                 } else {
                     error = null
                 }

@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/texture"
     tools:context=".view.upload_story.UploadStoryActvity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -85,7 +86,7 @@
                 android:gravity="start"
                 android:hint="@string/write_your_caption_text"
                 android:lines="10"
-                android:textSize="15sp"
+                android:textSize="18sp"
                 tools:ignore="TextContrastCheck,VisualLintTextFieldSize" />
 
         </com.google.android.material.textfield.TextInputLayout>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">StoryAppByOby</string>
+
+    <string name="signup">登録</string>
+    <string name="login">ログイン</string>
+    <string name="message_welcome_page">魅力的なストーリーが生まれる場所！さまざまなジャンルのストーリーを探索し楽しむプラットフォームを誇りに思います。スリリングな冒険から魅力的なロマンスまで、私たちはさまざまなストーリーへのエキサイティングなアクセスを提供し、エンターテイン、インスパイアし、言葉ごとに魅了されるストーリーのワールドへのエキサイティングな世界へのアクセスを提供します！</string>
+    <string name="title_welcome_page">YOURSTORへようこそ</string>
+    <string name="title_signup_page">以下の個人情報を入力してください</string>
+    <string name="email">メール</string>
+    <string name="password">パスワード</string>
+    <string name="message_login_page">最初にデータを入力してください</string>
+    <string name="title_login_page">YOURSTORでストーリーを共有しましょう</string>
+    <string name="name">名前</string>
+    <string name="greeting">こんにちは %1$s さん,</string>
+    <string name="logout">ログアウト</string>
+    <string name="email_hint">yourstore123@gmail.com</string>
+    <string name="name_hint">あなたの名前</string>
+
+    <string name="name_set_eror">2文字必要です</string>
+    <string name="message_signup">%1$s でアカウントが作成されました。ログインして体験を共有しましょう :)</string>
+    <string name="message_login">ログインに成功しました。さぁ、ストーリーを作成しましょう！</string>
+    <string name="bottom_next_signup_login">次へ</string>
+    <string name="email_set_eror">有効ではありません</string>
+
+    <string name="expression_first">うぉー！！</string>
+    <string name="expression_second">おっとっと！！</string>
+
+    <string name="register_button_label">登録</string>
+    <string name="fill_form_error_label">最初に記入してください</string>
+
+    <string name="message_no_valid_email">"有効なメールアドレスまたはパスワードではありません"</string>
+    <string name="description">説明</string>
+    <string name="_text">説明 :</string>
+    <string name="upload_text">アップロード</string>
+    <string name="write_your_caption_text">キャプションを書く</string>
+
+    <string name="message_passsword">パスワードは少なくとも8文字必要です</string>
+    <string name="toast_empty_image">画像が見つかりませんでした</string>
+
+    <string name="permission_toast_granted">パーミッションリクエストが許可されました！</string>
+    <string name="permission_toast_denied">パーミッションリクエストが拒否されました</string>
+    <string name="message_upload_acc">投稿がアップロードされました。</string>
+    <string name="message_upload_tolak">投稿がアップロードされませんでした。</string>
+    <string name="change_language">言語を変更</string>
+    <string name="profile_menu_text">プロフィールメニュー</string>
+    <string name="change_language_Text">言語を変更</string>
+
+    <string name="message_password">パスワードは8文字未満では指定できません</string>
+
+</resources>

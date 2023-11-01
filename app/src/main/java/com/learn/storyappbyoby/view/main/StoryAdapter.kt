@@ -35,7 +35,7 @@ class StoryAdapter(private val ListStoryActivity : List<ListStoryItem>):
                     //set touch story
                     cardListStory.setOnClickListener {
                         val intentDetail = Intent(itemView.context, DetailActivity::class.java)
-                        intentDetail.putExtra("storyItem", item)
+                        intentDetail.putExtra(DetailActivity.TAG, item)
 
                         //animation
                         val option: ActivityOptionsCompat =

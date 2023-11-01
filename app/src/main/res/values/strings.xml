@@ -30,7 +30,7 @@
 
     <string name="message_no_valid_email">"your email or password not valid"</string>
     <string name="description">description</string>
-    <string name="_text">Detail :</string>
+    <string name="_text">Description :</string>
     <string name="upload_text">UPLOAD</string>
     <string name="write_your_caption_text">write your caption</string>
 
@@ -44,5 +44,10 @@
     <string name="change_language">change_language\n</string>
     <string name="profile_menu_text">profile_menu</string>
     <string name="change_language_Text">Change Language</string>
+
+    <string name="message_password">Password must be at least 8 characters long</string>
+    <string name="title_activity_maps">MapsActivity</string>
+    <string name="maps">Maps</string>
+
 
 </resources>

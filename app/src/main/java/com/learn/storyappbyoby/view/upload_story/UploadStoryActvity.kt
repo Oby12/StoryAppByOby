@@ -16,6 +16,7 @@ import android.view.WindowManager
 import android.widget.Toast
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
@@ -26,9 +27,11 @@ import com.learn.storyappbyoby.view.ViewModelFactory
 import com.learn.storyappbyoby.view.custom.MyButton
 import com.learn.storyappbyoby.view.custom.MyEditTextDescription
 import com.learn.storyappbyoby.view.main.MainActivity
+import com.learn.storyappbyoby.view.main.MainViewModel
 import com.learn.storyappbyoby.view.utils.getImageUri
 import com.learn.storyappbyoby.view.utils.reduceFileImage
 import com.learn.storyappbyoby.view.utils.uriToFile
+import com.learn.storyappbyoby.view.welcome.WelcomeActivity
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.MultipartBody
 import okhttp3.RequestBody.Companion.asRequestBody
@@ -36,7 +39,10 @@ import okhttp3.RequestBody.Companion.toRequestBody
 
 class UploadStoryActvity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityUploadStoryBinding
+    //private lateinit var binding: ActivityUploadStoryBinding
+
+    private var _binding: ActivityUploadStoryBinding? = null
+    private val binding get() = _binding
 
     private var currentImageUri : Uri? = null
 
@@ -44,7 +50,10 @@ class UploadStoryActvity : AppCompatActivity() {
 
     private lateinit var myEditTextDescription : MyEditTextDescription
 
-    private lateinit var uploadStoryViewModel : UploadStoryViewModel
+//    private lateinit var uploadStoryViewModel : UploadStoryViewModel
+        private val uploadStoryViewModel by viewModels<UploadStoryViewModel> { ViewModelFactory.getInstance(this) }
+
+
 
     //permisision toast
     private val requestPermissionLauncher =
@@ -52,24 +61,33 @@ class UploadStoryActvity : AppCompatActivity() {
             ActivityResultContracts.RequestPermission()
         ) { isGranted: Boolean ->
             if (isGranted) {
-                Toast.makeText(this, getString(R.string.permission_toast_granted), Toast.LENGTH_LONG).show()
-            } else {
                 Toast.makeText(this, getString(R.string.permission_toast_denied), Toast.LENGTH_LONG).show()
+            } else {
+                Toast.makeText(this, getString(R.string.permission_toast_granted), Toast.LENGTH_LONG).show()
             }
         }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityUploadStoryBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        _binding = ActivityUploadStoryBinding.inflate(layoutInflater)
+        setContentView(binding?.root)
 
         myButton = findViewById(R.id.uploadButton)
         myEditTextDescription = findViewById(R.id.description_edit_text)
 
+        uploadStoryViewModel.getSession().observe(this) { user ->
+            if (!user.isLogin) {
+                startActivity(Intent(this, WelcomeActivity::class.java))
+                finish()
+            }
+            else {
+                binding?.uploadButton?.setOnClickListener{ uploadImage(user.token) }
+            }
+        }
+
        //galeri
-        binding.fabGaleryButtonUpload.setOnClickListener { startGallery() }
-        binding.fabCameraButtonUpload.setOnClickListener { startCamera() }
-        binding.uploadButton.setOnClickListener{ uploadImage() }
+        binding?.fabGaleryButtonUpload?.setOnClickListener { startGallery() }
+        binding?.fabCameraButtonUpload?.setOnClickListener { startCamera() }
 
         //permission
         if (!allPermissionsGranted()) {
@@ -77,8 +95,10 @@ class UploadStoryActvity : AppCompatActivity() {
         }
 
 
+
+
         //back button main
-        binding.fabBackMain.setOnClickListener {
+        binding?.fabBackMain?.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
             }
@@ -181,15 +201,14 @@ class UploadStoryActvity : AppCompatActivity() {
     }
 
     //pengecekan uri
-    private fun uploadImage() {
-        var token: String
-        val factory: ViewModelFactory = ViewModelFactory.getInstance(this)
-        uploadStoryViewModel = ViewModelProvider(this, factory)[UploadStoryViewModel::class.java]
+    private fun uploadImage(token: String) {
+       /* val factory: ViewModelFactory = ViewModelFactory.getInstance(this)
+        uploadStoryViewModel = ViewModelProvider(this, factory)[UploadStoryViewModel::class.java]*/
 
         currentImageUri?.let { uri ->
             val imageFile = uriToFile(uri, this).reduceFileImage()
             Log.d("Image File", "showImage: ${imageFile.path}")
-            val description = binding.descriptionEditText.text.toString()
+            val description = binding?.descriptionEditText?.text.toString()
 
             showLoading(true)
 
@@ -201,9 +220,9 @@ class UploadStoryActvity : AppCompatActivity() {
                 requestImageFile
             )
 
-            uploadStoryViewModel.uploadStory(multipartBody,requestBody)
+            uploadStoryViewModel.uploadStory(token,multipartBody,requestBody)
             uploadStoryViewModel.isLoading.observe(this){
-                binding.progressIndicator.show()
+                binding?.progressIndicator?.show()
             }
 
 
@@ -248,7 +267,7 @@ class UploadStoryActvity : AppCompatActivity() {
     }
 
     private fun showLoading(isLoading: Boolean) {
-        binding.progressIndicator.visibility = if (isLoading) View.VISIBLE else View.GONE
+        binding?.progressIndicator?.visibility = if (isLoading) View.VISIBLE else View.GONE
     }
     private fun showToast(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
@@ -265,7 +284,7 @@ class UploadStoryActvity : AppCompatActivity() {
     private fun showImage() {
         currentImageUri?.let {
             Log.d("Image URI", "showImage: $it")
-            binding.imageUpload.setImageURI(it)
+            binding?.imageUpload?.setImageURI(it)
         }
     }
 

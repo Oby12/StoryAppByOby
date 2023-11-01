@@ -80,8 +80,8 @@ class UserRepository private constructor(
         liveData(Dispatchers.IO) {
             emit(ResultState.Loading)
             try {
-                ApiConfig.getApiService(getSession().first().token)
-                val successResponse = apiService.getStories()
+
+                val successResponse = apiService.getStories("Bearer $token")
                 val ListStory = successResponse.listStory
                 emit(ResultState.Success(ListStory))
             } catch (e: HttpException) {
@@ -104,10 +104,10 @@ class UserRepository private constructor(
             }
         }
 
-    fun uploadImage(imageFile: MultipartBody.Part, description: RequestBody) = liveData {
+    fun uploadImage(token: String,imageFile: MultipartBody.Part, description: RequestBody) = liveData {
         emit(ResultState.Loading)
         try {
-            val successResponse = apiService.uploadImage(imageFile,description)
+            val successResponse = apiService.uploadImage("Bearer $token",imageFile,description)
             emit(ResultState.Success(successResponse))
         } catch (e: HttpException) {
             val errorBody = e.response()?.errorBody()?.string()

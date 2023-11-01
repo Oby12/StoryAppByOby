@@ -2,6 +2,7 @@ package com.learn.storyappbyoby.view.main
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
@@ -13,6 +14,7 @@ import com.learn.storyappbyoby.R
 import com.learn.storyappbyoby.data.ResultState
 import com.learn.storyappbyoby.databinding.ActivityMainBinding
 import com.learn.storyappbyoby.view.ViewModelFactory
+import com.learn.storyappbyoby.view.maps.MapsActivity
 import com.learn.storyappbyoby.view.setting.SettingActivity
 import com.learn.storyappbyoby.view.upload_story.UploadStoryActvity
 import com.learn.storyappbyoby.view.welcome.WelcomeActivity
@@ -24,7 +26,9 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
 
-    private lateinit var mainViewModel: MainViewModel
+    //private lateinit var mainViewModel: MainViewModel
+
+    private val mainViewModel by viewModels<MainViewModel> { ViewModelFactory.getInstance(this) }
 
     private lateinit var adapter : StoryAdapter
 
@@ -59,22 +63,21 @@ class MainActivity : AppCompatActivity() {
                 val intent = Intent(this, SettingActivity::class.java)
                 startActivity(intent)
             }
+            R.id.logout_menu ->{
+                mainViewModel.logout()
+            }
+            R.id.maps_menu ->{
+                val intent = Intent(this, MapsActivity::class.java)
+                startActivity(intent)
+            }
         }
         return super.onOptionsItemSelected(item)
     }
 
-//    private fun setupView() {
-//        @Suppress("DEPRECATION")
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-//            window.insetsController?.hide(WindowInsets.Type.statusBars())
-//        } else {
-//            window.setFlags(
-//                WindowManager.LayoutParams.FLAG_FULLSCREEN,
-//                WindowManager.LayoutParams.FLAG_FULLSCREEN
-//            )
-//        }
-//        supportActionBar?.title = ""
-//    }
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.main_menu,menu)
+        return super.onCreateOptionsMenu(menu)
+    }
 
     private fun startUpload() {
         binding.fabStoryUpload.setOnClickListener {
@@ -84,8 +87,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupViewModel(){
-        val myFactory : ViewModelFactory = ViewModelFactory.getInstance(this)
-        mainViewModel = ViewModelProvider(this,myFactory)[MainViewModel::class.java]
+
 
         mainViewModel.listStoryUser.observe(this){
             when(it){

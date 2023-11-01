@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.asFlow
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import com.learn.storyappbyoby.data.ResultState
@@ -24,11 +25,13 @@ class MainViewModel(private val repository: UserRepository) : ViewModel() {
 
     fun getListStoryUser(token: String) {
         _isLoading.value = true
-        val liveData = repository.getStories("Bearer $token")
-        _ListStoryUser.addSource(liveData) { result ->
-            _ListStoryUser.value = result
+        viewModelScope.launch {
+            repository.getStories(token).asFlow().collect {
+                _ListStoryUser.value = it
+            }
         }
     }
+
 
     fun getSession(): LiveData<UserModel> {
         return repository.getSession().asLiveData()
@@ -40,3 +43,4 @@ class MainViewModel(private val repository: UserRepository) : ViewModel() {
         }
     }
 }
+

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<string name="app_name">StoryAppByOby</string>
+
+<string name="signup">Daftar</string>
+<string name="login">Masuk</string>
+<string name="message_welcome_page">Tempat terciptanya cerita-cerita menarik! Kami dengan bangga mempersembahkan platform di mana Anda dapat menjelajahi dan menikmati beragam cerita dari berbagai genre. Dari petualangan seru hingga roman yang memikat, kami memberikan akses mudah ke dunia cerita yang mendebarkan dan memikat yang akan menghibur, menginspirasi, dan membuat Anda terpaku pada setiap kata!!</string>
+<string name="title_welcome_page">Selamat datang di YOURSTOR</string>
+<string name="title_signup_page">Harap lengkapi informasi pribadi Anda di bawah ini</string>
+<string name="email">Email</string>
+<string name="password">Kata Sandi</string>
+<string name="message_login_page">Silakan masukkan data Anda terlebih dahulu</string>
+<string name="title_login_page">Ayo berbagi cerita Anda di YOURSTOR</string>
+<string name="name">Nama</string>
+<string name="greeting">Halo %1$s,</string>
+<string name="logout">Keluar</string>
+<string name="email_hint">yourstore123@gmail.com</string>
+<string name="name_hint">Nama Anda</string>
+
+<string name="name_set_eror">Dua Huruf</string>
+<string name="message_signup">Akun dengan %1$s sudah siap. Ayo masuk dan mulai Berbagi Pengalaman Anda :).</string>
+<string name="message_login">Anda telah berhasil masuk. Mari buat Cerita Anda sekarang!!</string>
+<string name="bottom_next_signup_login">Selanjutnya</string>
+<string name="email_set_eror">Tidak Valid</string>
+
+<string name="expression_first">yeahhh!!</string>
+<string name="expression_second">Upssss!!</string>
+
+<string name="register_button_label">Daftar</string>
+<string name="fill_form_error_label">Harap isi terlebih dahulu</string>
+
+<string name="message_no_valid_email">"Email atau kata sandi Anda tidak valid"</string>
+<string name="description">Deskripsi</string>
+<string name="_text">Deskripsi :</string>
+<string name="upload_text">UNGGAH</string>
+<string name="write_your_caption_text">tulis keterangan Anda</string>
+
+<string name="message_passsword">Kata sandi harus terdiri dari setidaknya 8 karakter</string>
+<string name="toast_empty_image">Gambar tidak ditemukan</string>
+
+<string name="permission_toast_granted">Permintaan izin disetujui!</string>
+<string name="permission_toast_denied">Permintaan izin ditolak</string>
+<string name="message_upload_acc">Pos Anda telah diunggah.</string>
+<string name="message_upload_tolak">Pos Anda tidak berhasil diunggah.</string>
+<string name="change_language">Ganti Bahasa</string>
+<string name="profile_menu_text">Menu Profil</string>
+<string name="change_language_Text">Ubah Bahasa</string>
+
+    <string name="message_password">"Password tidak boleh kurang dari 8 karakter"</string>
+</resources>

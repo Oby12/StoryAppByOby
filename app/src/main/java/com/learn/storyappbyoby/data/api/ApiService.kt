@@ -39,6 +39,7 @@ interface ApiService {
 
     @GET("stories")
     suspend fun getStories(
+        @Header("Authorization") token: String
     ) : ListStoryResponse
 
     @GET("stories/{id}")
@@ -48,13 +49,11 @@ interface ApiService {
     ) : DetailStoryResponse
 
 
-        @Multipart
-        @POST("stories")
-       suspend fun uploadImage(
-            //@Header("Authorization") token: String,
+    @Multipart
+    @POST("stories")
+    suspend fun uploadImage(
+            @Header("Authorization") token: String,
             @Part file: MultipartBody.Part,
             @Part("description") description: RequestBody,
         ): UploadResponse
-
-
 }
